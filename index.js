@@ -7,7 +7,7 @@ const connectDb = require('./config/db')
 const cartRouter = require('./routes/cartRoutes')
 const app = express()
 
-// Use the port Render gives you, or default to 3000 locally
+
 const port = process.env.PORT || 3000
 
 
@@ -19,10 +19,13 @@ app.use(express.json())
 
 app.use(cors({
     origin: [
-        'https://snapshop-frontend.vercel.app/register', // Replace with your actual Vercel link
-        'http://localhost:5173'                 // Keep this for local development
+        'https://snapshop-frontend.vercel.app', 
+        'http://localhost:5173'                 
     ],
-    credentials: true
+    
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], 
+    allowedHeaders: ["Content-Type", "Authorization"]     
 }))
 app.use(cookieParser())
 
