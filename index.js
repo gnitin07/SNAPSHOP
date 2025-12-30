@@ -15,10 +15,15 @@ const port = process.env.PORT || 3000
 connectDb()
 
 app.use(express.json())
+// index.js
+
 app.use(cors({
-    origin: process.env.ORIGIN, 
+    origin: [
+        'https://snapshop-frontend.vercel.app/register', // Replace with your actual Vercel link
+        'http://localhost:5173'                 // Keep this for local development
+    ],
     credentials: true
-}));
+}))
 app.use(cookieParser())
 
 app.use("/api/auth",authRouter)
