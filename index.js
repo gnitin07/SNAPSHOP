@@ -6,7 +6,11 @@ const authRouter = require('./routes/authRoutes')
 const connectDb = require('./config/db')
 const cartRouter = require('./routes/cartRoutes')
 const app = express()
-const port = 3000
+
+// Use the port Render gives you, or default to 3000 locally
+const port = process.env.PORT || 3000
+
+
 
 connectDb()
 
@@ -25,6 +29,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`Server listening on port ${port}`)
 })
